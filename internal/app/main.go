@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"github.com/FanyCastro/go-myfirstrestservice/internal/app/server"
+	"log"
+)
 
 func main() {
-	fmt.Println("hello world!")
+	srv := server.Server{}
+	err := srv.Start()
+	if err != nil {
+		log.Fatalf("Fail to start server, %q", err.Error())
+	}
 }
