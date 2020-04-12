@@ -8,7 +8,7 @@ COVERAGE=$(GOTOOL) cover
 GOFORMAT=$(GOCMD) fmt
 BUILD_DIR=build
 BINARY_NAME=$(BUILD_DIR)/go-myfirstrestservice
-APP_PATH="./internal/app"
+APP_PATH=./internal/app
 default: build
 
 build: clean test
