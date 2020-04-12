@@ -2,6 +2,6 @@ package main
 
 import "testing"
 
-func TestEmpty(t *testing.T) {
-	t.Skip("Build failing in Travis")
+func Test_Empty(t *testing.T) {
+	main()
 }
