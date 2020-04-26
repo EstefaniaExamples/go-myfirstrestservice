@@ -5,9 +5,13 @@ import (
 	"log"
 )
 
+func run (port int) error {
+	srv := server.NewServer(port)
+	return srv.Start()
+}
+
 func main() {
-	srv := server.NewServer()
-	err := srv.Start()
+	err := run(8080)
 	if err != nil {
 		log.Fatalf("Fail to start server, %q", err.Error())
 	}

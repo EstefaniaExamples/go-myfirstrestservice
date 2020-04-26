@@ -2,6 +2,10 @@ package main
 
 import "testing"
 
-func TestMain_IsWorking(t *testing.T) {
+func TestRun_FailsWithInvalidPort(t *testing.T) {
+	err := run(1000000)
 
+	if err == nil {
+		t.Fatalf("expect error got nil")
+	}
 }
