@@ -2,6 +2,6 @@ package main
 
 import "testing"
 
-func Test_Empty(t *testing.T) {
+func TestMain_IsWorking(t *testing.T) {
 
 }

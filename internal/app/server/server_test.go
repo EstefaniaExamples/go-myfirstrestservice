@@ -4,20 +4,38 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 )
 
 func TestServer_Start(t *testing.T) {
+	srv := NewServer()
+	var err error = nil
 
-	srv := Server{}
+	go func() {
+		err = srv.Start()
+	}()
+
+	srv.quit()
+
+	time.Sleep(100 * time.Millisecond)
+	if err != nil {
+		t.Fatalf("Error starting server, got %v, want nil", err)
+	}
+
+}
+
+func TestServer_Request(t *testing.T) {
+	srv := NewServer()
+
 	request, _ := http.NewRequest("GET", "/", nil)
-	response := httptest.NewRecorder()
+	response := httptest.NewRecorder()  // mock the response
 
 	srv.ServeHTTP(response, request)
 
 	want := 200
 	got := response.Code
 	if got != want {
-		t.Fatalf("Error starting server, got %d, want %d", got, want)
+		t.Fatalf("Error requesting server, got %d, want %d", got, want)
 	}
 
 	wantBody := "ok"
